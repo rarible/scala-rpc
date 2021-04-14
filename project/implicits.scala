@@ -16,7 +16,7 @@ object implicits {
     def common: Project = project.settings(
       organization := "com.rarible.rpc",
       licenses += ("MIT", url("http://opensource.org/licenses/MIT")),
-      version := "0.1.1",
+      version := "0.1.2",
       scalaVersion := Dependencies.fullScalaVersion,
       githubOwner := "rariblecom",
       githubRepository := "scala-rpc",
