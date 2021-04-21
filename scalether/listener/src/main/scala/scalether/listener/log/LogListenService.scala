@@ -55,13 +55,15 @@ class LogListenService[F[_]](ethereum: Ethereum[F],
         logger.debug(s"createFilter from=$fromBlock to=$blockNumber")
       }
       for {
-        filter <- listener.createFilter(Hex.prefixed(checkForZero(fromBlock)), Hex.prefixed(blockNumber))
+        filter <- listener.createFilter(prefixed(checkForZero(fromBlock)), prefixed(blockNumber))
         logs <- ethereum.ethGetLogs(filter)
       } yield logs
     }
   }
 
-  private def updateSettingIfChanged(savedBlockNumber: Option[BigInteger], current: BigInteger): F[Unit] = {
+  def prefixed(bigInteger: BigInteger): String = "0x" + bigInteger.toString(16)
+
+  private def updateSettingIfChanged(savedBlockNumber: Option[BigInteger], current: BigInteger) = {
     if (savedBlockNumber.contains(current)) {
       m.unit
     } else {
