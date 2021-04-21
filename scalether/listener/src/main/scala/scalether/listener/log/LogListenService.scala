@@ -9,9 +9,6 @@ import com.rarible.blockchain.state.State
 import org.slf4j.{Logger, LoggerFactory}
 import scalether.core.Ethereum
 import scalether.domain.response.Log
-import scalether.util.Hex
-
-import scala.language.higherKinds
 
 class LogListenService[F[_]](ethereum: Ethereum[F],
                              confidence: Int,
@@ -61,7 +58,7 @@ class LogListenService[F[_]](ethereum: Ethereum[F],
     }
   }
 
-  def prefixed(bigInteger: BigInteger): String = "0x" + bigInteger.toString(16)
+  private def prefixed(bigInteger: BigInteger): String = "0x" + bigInteger.toString(16)
 
   private def updateSettingIfChanged(savedBlockNumber: Option[BigInteger], current: BigInteger) = {
     if (savedBlockNumber.contains(current)) {
