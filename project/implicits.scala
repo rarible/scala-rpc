@@ -13,7 +13,7 @@ object implicits {
       .settings(libraryDependencies += logbackClassic % scope)
 
     def publish: Project = project.settings(
-      credentials += Credentials("", "nexus-ext.rarible.int", sys.env.get("USERNAME").get, sys.env.get("PASSWORD").get),
+      credentials += Credentials("", "nexus-ext.rarible.int", sys.env.get("USERNAME").getOrElse(""), sys.env.get("PASSWORD").getOrElse("")),
       publishTo := Some(("releases": RepositoryName) at "http://nexus-ext.rarible.int/repository/maven-releases/" withAllowInsecureProtocol true)
     )
 
