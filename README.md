@@ -1,4 +1,5 @@
 # scala-rpc (Bitcoin and Ethereum JSON RPC client)
+
 Scala client library for different blockchain nodes. Currently, Bitcoin and Ethereum are supported
 Litecoin, Bitcoin cash and other Bitcoin-like nodes should be supported as well
 
@@ -7,21 +8,27 @@ This is RPC client library for connecting to bitcoind and geth/parity nodes. Ple
 This library is not replacement of Bitcoin/Ethereum nodes. It connects to nodes using http json rpc protocol.
 
 ## Supports non-blocking IO
+
 Different http transport libraries are supported. Currently there are implementations using:
+
 * Spring's WebClient (for non-blocking IO). 
 * scalaj-http for blocking IO
 
 Library uses Typelevel's https://github.com/typelevel/cats to support different types of results (Try for blocking API and Mono for Spring's WebClient)
 
 ## Features
+
 Library is modular and provides different layers:
+
 * thin layer over JSON RPC
 * different transaction senders for Ethereum (you can use the same API for sending transactions and sign them in the node or sign them right in Java code, from your client)
 * common blockchain listeners for Bitcoin/Ethereum: you can listen to different events using the same api for both blockchains
 * contract wrappers for Ethereum 
 
 ## Adding dependencies (Maven)
+
 1. Add bintray daonomic repository
+
 ```xml
 <repositories>
     <repository>
@@ -30,9 +37,10 @@ Library is modular and provides different layers:
         <url>https://dl.bintray.com/daonomic/maven/</url>
     </repository>
 </repositories>
-
 ```
-2. Add scalether dependency 
+
+2. Add scalether dependency
+
 ```xml
 <dependency>
     <groupId>io.daonomic.scalether</groupId>
@@ -43,11 +51,15 @@ Library is modular and provides different layers:
 ```
 
 ## Adding dependencies (sbt)
+
 1. Add bintray daonomic repository
+
 ```scala
 resolvers += Resolver.bintrayRepo("daonomic", "maven")
 ```
+
 2. Add scalether dependency
+
 ```scala
 libraryDependencies += "io.daonomic.scalether" %% "contract" % scaletherVersion
 ```
@@ -59,3 +71,11 @@ see https://github.com/daonomic/scala-rpc/tree/master/scalether for Ethereum exa
 and https://github.com/daonomic/scala-rpc/tree/master/bitcoin for Bitcoin examples
 
 For information about smart contract wrappers generator see https://github.com/daonomic/scalether-maven-plugin
+
+## Suggestions
+
+You are welcome to [suggest features](https://github.com/rarible/protocol/discussions) and [report bugs found](https://github.com/rarible/protocol/issues)!
+
+## License
+
+scala-rpc is available under [MIT License](LICENSE.md).
